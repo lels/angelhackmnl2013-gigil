@@ -1,8 +1,14 @@
 body {
   padding-top: 40px;
+  font-family: 'OpenSansRegular', sans-serif;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 h1 {
+  line-height: 1.4em;
 }
 
 .jumbotron.masthead {
@@ -130,7 +136,7 @@ section header {
 }
 
 dl.list {
-  margin: 0 1em;
+  margin: 0.6em 1em 0.4em;
 }
 
 dl.list dt {
@@ -181,6 +187,7 @@ ul.actions li:last-child {
 .profile-page .more-info .container {
   width: auto;
   background-color: white;
+  padding: 40px 10px 20px;
 }
 
 .profile-page .basic-info .thumb img {
