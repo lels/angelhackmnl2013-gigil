@@ -7,35 +7,35 @@
       <section class="span4 fixed basic-info">
         <div class="container">
           <div class="thumb">
-            <img src="{% static "img/student3.jpg"%}">
+            <img src="{{student.image.url}}">
           </div>
           <h1>
-            Paula Caballero
+            {{s.first_name}} {{s.middle_name}} {{s.last_name}}
           </h1>
           <dl class="clearfix list">
             <dt>
-              Vital Stat 1
+              Date of Birth
             </dt>
             <dd>
-              Stat Value
+              {{student.date_of_birth}}
             </dd>
             <dt>
-              Vital Stat 1
+              Gender
             </dt>
             <dd>
-              Stat Value
+              {{student.gender.get_desc}}
             </dd>
             <dt>
-              Vital Stat 1
+              Year Level
             </dt>
             <dd>
-              Stat Value
+              {{student.c_year_level.get_desc}}
             </dd>
             <dt>
-              Vital Stat 1
+              Amount Needed
             </dt>
             <dd>
-              Stat Value
+             {{student.amount_needed}}
             </dd>
             <dt>
               Vital Stat 1
@@ -54,14 +54,8 @@
       <section class="span8 more-info">
         <div class="container">
           <article>
-            <h1>HI</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque porttitor vulputate sapien eget commodo. Quisque condimentum, nibh vel rhoncus dictum, augue mauris faucibus dui, vestibulum venenatis lacus felis a enim. Morbi vitae ultricies quam. Cras ultrices, sapien scelerisque consectetur ultrices, eros magna semper velit, quis tincidunt magna nunc eget metus. Phasellus id erat nisi. Sed consequat suscipit porta. Phasellus lorem lacus, blandit sit amet consectetur quis, mollis ut elit. Cras sem enim, rutrum id molestie id, lobortis id ante.</p>
-            <p>Nam vel metus sed tortor rhoncus porta. Sed sollicitudin, elit in mattis luctus, turpis nisi mattis neque, vitae tristique augue lectus id magna. Phasellus vel viverra odio. Suspendisse rutrum ligula ultricies, elementum turpis in, lacinia leo. In lacinia nec purus non ultrices. Nulla facilisi. Duis sed euismod nisl.</p>
-            <p>Aliquam vel magna accumsan, semper dui eget, pretium nulla. Integer sed pulvinar leo. Quisque ut nunc in ante laoreet molestie at ac massa. Vivamus dolor purus, imperdiet quis lectus sed, imperdiet bibendum tortor. Aenean semper est at malesuada rutrum. Nunc tristique purus non dui lacinia tempus. Integer eget orci in sapien mattis sagittis ac ac mauris. Sed imperdiet orci adipiscing, ornare lectus et, faucibus lectus. Phasellus erat dolor, fermentum eget pharetra vitae, tincidunt quis neque. Nunc vitae sem augue. Donec sollicitudin orci urna, nec sodales ligula blandit ac. Morbi ullamcorper vestibulum velit, eu fringilla est tempus vitae. Duis aliquet erat a nulla congue, quis lobortis leo feugiat. Vivamus eu mauris arcu. Aenean molestie, libero eget laoreet consequat, enim est eleifend orci, in sodales sapien dui a arcu.</p>
-            <p>Sed egestas ante vulputate magna gravida luctus. Quisque tempor felis ut dolor sollicitudin, sit amet consequat lectus scelerisque. Curabitur dapibus mauris mauris, molestie laoreet tellus scelerisque in. Sed iaculis, enim in bibendum facilisis, purus massa luctus nunc, ac accumsan arcu justo in est. Etiam quis neque a odio pellentesque iaculis. Etiam dapibus pellentesque velit, nec ullamcorper orci. Sed ac felis sodales, molestie velit et, volutpat metus. Donec consequat nec nisl eget posuere.</p>
-            <footer>
-              social media
-            </footer>
+            <h1>{{student.story.title}}</h1>
+            {{student.story.text|linebreaks}}
           </article>
         </div>
       </section>
