@@ -24,8 +24,15 @@
                 <img src="{{s.image.url}}">
               </a>
             </div>
-            <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
-            <p>{{s.story.text|linebreaks}}</p>
+            <a href="{{s.pk}}">
+              <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
+            </a>
+            <div class="ellipsis" style="height:170px;">
+              {{s.story.text|linebreaks}}
+            </div>
+            <script type="text/javascript">
+              $("div.ellipsis").dotdotdot();
+            </script>
           </div>
         </article>
       {% endfor %}
