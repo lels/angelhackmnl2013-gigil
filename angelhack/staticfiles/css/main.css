@@ -26,6 +26,7 @@ h1 {
 
 .jumbotron.masthead h1 {
   font-family: 'PacificoRegular', sans-serif;
+  text-transform: lowercase;
   font-weight: normal;
   font-size: 2em;
   line-height: 1.2em;
@@ -135,6 +136,10 @@ section header {
   padding: 0 0 20px;
 }
 
+.profile-page .basic-info .progress {
+  margin: 30px 40px 20px;
+}
+
 dl.list {
   margin: 0.6em 1em 0.4em;
 }
@@ -187,11 +192,34 @@ ul.actions li:last-child {
 .profile-page .more-info .container {
   width: auto;
   background-color: white;
-  padding: 40px 10px 20px;
+  padding: 40px 18px 20px;
+  border-radius: 0 1em 1em 0;
+}
+
+.profile-page .basic-info .thumb {
+  width: 100%;
 }
 
 .profile-page .basic-info .thumb img {
   border-radius: 1em 1em 0 0;
+  width: 100%;
+}
+
+.profile-page .more-info .container article {
+}
+
+.profile-page .more-info .container article h1 {
+  text-transform: lowercase;
+  font-family: 'PacificoRegular', sans-serif;
+  font-weight: normal;
+}
+
+.profile-page .more-info .container article footer {
+  height: 80px;
+  padding: 0 20px;
+  background-color: transparent;
+  text-shadow: none;
+  text-align: right;
 }
 
 .main {
@@ -199,4 +227,52 @@ ul.actions li:last-child {
 
 footer {
   margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  body > * {
+    padding: 0 20px;
+  }
+
+  body > .navbar {
+    padding: 0
+  }
+  
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    margin: 0;
+  }
+}
+
+@media (max-width: 979px) {
+  .navbar-fixed-top, .navbar-fixed-bottom {
+    position: absolute;
+  }
+}
+
+
+.navbar .form-search {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.navbar .form-search .btn {
+  display: none;
+}
+
+.navbar {
+  font-family: 'Cabin', sans-serif;
+}
+
+.navbar a {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+
+.navbar a.logo {
+  text-transform: lowercase;
 }

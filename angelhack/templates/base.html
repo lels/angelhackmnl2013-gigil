@@ -4,6 +4,7 @@
 <html>
 <head>
   <title>kwaderno</title>
+  <link rel="icon" href="{% static "img/favicon.ico"%}">
   <link rel="stylesheet" href="{% static "fonts/Pacifico/stylesheet.css"%}">
   <link rel="stylesheet" href="{% static "fonts/OpenSans/stylesheet.css"%}">
   <link rel="stylesheet" href="{% static "fonts/Cabin/stylesheet.css"%}">
@@ -17,10 +18,9 @@
         <a class="logo" href="#">kwaderno</a>
         <nav class="nav-collapse collapse">
           <ul class="nav">
-            <li><a href="#">home</a></li>
-            <li><a href="#">students</a></li>
+            <li><a href="#">browse</a></li>
             <li><a href="#">about us</a></li>
-            <li><a href="#">derps</a></li>
+            <li><form class="form-search" action="." method="get"><input type="search" name="search" placeholder="search" class="search-query"><input type="submit" class="btn" value="Search"></form></li>
           </ul>
         </nav>
       </div>
@@ -49,6 +49,8 @@
     </div>
   </footer>
   
-  <script src="bootstrap.min.js"></script>
+  <script src="{% static "js/jquery-2.0.2.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/jquery.dotdotdot-1.5.2-packed.js" %}"></script>
 </body>
 </html>

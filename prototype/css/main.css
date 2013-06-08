@@ -113,13 +113,20 @@ section header {
   background-attachment: fixed;
 }
 
+.profile-page .main section {
+  margin-top: 40px;
+}
+
 .profile-page .basic-info {
+  border-radius: 1em;
   text-align: center;
 }
 
 .profile-page .basic-info .container {
+  border-radius: 1em;
   width: auto;
   background-color: white;
+  padding: 0 0 20px;
 }
 
 dl.list {
@@ -164,6 +171,7 @@ ul.actions li:last-child {
 }
 
 .profile-page .more-info {
+  margin-top: 40px;
   background-color: blue;
   padding-left: 40px;
 }
@@ -173,8 +181,11 @@ ul.actions li:last-child {
   background-color: white;
 }
 
+.profile-page .basic-info .thumb img {
+  border-radius: 1em 1em 0 0;
+}
+
 .main {
-  padding-top: 40px;
 }
 
 footer {
