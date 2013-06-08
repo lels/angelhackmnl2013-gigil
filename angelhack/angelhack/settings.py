@@ -1,3 +1,7 @@
+import os  
+# Set the PROJECT_HOME variable. This will be used to prepend to all file/directory paths  
+PROJECT_HOME = os.path.join(os.path.dirname(__file__), '../')
+
 # Django settings for angelhack project.
 
 DEBUG = True
@@ -72,6 +76,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_HOME, 'staticfiles'),
 )
 
 # List of finder classes that know how to find static files in
@@ -111,6 +116,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_HOME, 'templates'),
 )
 
 INSTALLED_APPS = (

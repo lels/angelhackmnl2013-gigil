@@ -1,0 +1,193 @@
+body {
+  padding-top: 40px;
+}
+
+h1 {
+}
+
+.jumbotron.masthead {
+  padding: 70px 0 80px;
+  background-image: url('../img/bookshelf.jpg');
+  background-position: middle center;
+  background-size: 100%;
+  color: white;
+  font-size: 2em;
+  line-height: 1.2em;
+  margin-bottom: 0.2em;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+.jumbotron.masthead h1 {
+  font-family: 'PacificoRegular', sans-serif;
+  font-weight: normal;
+  font-size: 2em;
+  line-height: 1.2em;
+  text-shadow: 1px 1px 1px black;
+}
+
+.navbar .nav {
+  float: right;
+}
+
+.navbar .logo,
+footer .logo {
+  float: left;
+  font-family: 'PacificoRegular', sans-serif;
+  line-height: 40px;
+  font-size: 1.2em;
+}
+
+footer {
+  height: 80px;
+  padding-top: 10px;
+  background-color: #333;
+  text-shadow: 1px 1px 1px black;
+}
+
+footer a {
+  color: #ccc;
+}
+
+footer a:hover {
+  color: #eee;
+  text-decoration: none;
+}
+
+footer nav ul {
+  padding: 0;
+  float: right;
+}
+
+footer nav li {
+  float: left;
+  display: block;
+  line-height: 40px;
+  padding: 0 1em;
+}
+
+.featured {
+  padding: 40px 0 20px;
+}
+
+.featured header {
+  margin-bottom: 2em;
+}
+
+.featured article {
+  border-radius: 1em;
+  border: 1em solid #eee;
+}
+
+.featured h1 {
+  color: #333;
+}
+
+.featured article > div {
+  padding: 1em;
+  border-radius: 0.2em;
+  border: 0.2em solid #999;
+}
+
+.featured .thumb {
+  overflow: hidden;
+  text-align: center;
+}
+
+.featured .thumb img {
+  height: 200px;
+  width: auto;
+  max-width: none;
+}
+
+section header {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.profile-page {
+  background-image: url('../img/bookshelf.jpg');
+  background-position: middle center;
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+.profile-page .main section {
+  margin-top: 40px;
+}
+
+.profile-page .basic-info {
+  border-radius: 1em;
+  text-align: center;
+}
+
+.profile-page .basic-info .container {
+  border-radius: 1em;
+  width: auto;
+  background-color: white;
+  padding: 0 0 20px;
+}
+
+dl.list {
+  margin: 0 1em;
+}
+
+dl.list dt {
+  padding: 0 2.25% 0 1.25%;
+  float: left;
+  width: 30%;
+  text-align: right;
+}
+
+dl.list dd {
+  padding: 0 1.25% 0 2.25%;
+  float: left;
+  width: 63%;
+  text-align: left;
+  margin: 0;
+}
+
+ul.actions {
+  display: block;
+}
+
+ul.actions li {
+  float: left;
+  display: block;
+  border: 1px solid #333;
+}
+
+ul.actions li+li {
+  border-left: 0;
+}
+
+ul.actions li:first-child {
+  border-radius: 0.25em 0 0 0.25em;
+}
+
+ul.actions li:last-child {
+  border-radius: 0 0.25em 0.25em 0;
+}
+
+.profile-page .more-info {
+  margin-top: 40px;
+  background-color: blue;
+  padding-left: 40px;
+}
+
+.profile-page .more-info .container {
+  width: auto;
+  background-color: white;
+}
+
+.profile-page .basic-info .thumb img {
+  border-radius: 1em 1em 0 0;
+}
+
+.main {
+}
+
+footer {
+  margin-top: 20px;
+}

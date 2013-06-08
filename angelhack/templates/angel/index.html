@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body %}
+  <section class="jumbotron masthead">
+    <h1>kwaderno</h1>
+    <p>Lorem ipsum dolor sit amet consecteture adpiscing elit.</p>
+    <p><input class="btn btn-primary" type="button" value="View Scholars"></p>
+  </section>
+  <section class="container featured">
+    <header>
+      <h1>
+        Meet Our Scholars
+      </h1>
+      <p>
+        Mauris facilisis interdum libero, et venenatis felis interdum vitae. 
+      </p>
+    </header>
+    <div class="row-fluid">
+      <article class="span4">
+        <div>
+          <div class="thumb">
+            <img src="{% static "img/student1.jpg" %}">
+          </div>
+          <h1>Dawn Quinones</h1>
+          <p>Cras in tincidunt massa. Mauris facilisis interdum libero, et venenatis felis interdum vitae. Curabitur sed enim eget orci pretium posuere dignissim vitae purus. Etiam sed ligula vulputate, pretium diam sit amet, egestas mi.</p>
+        </div>
+      </article>
+      <article class="span4">
+        <div>
+          <div class="thumb">
+            <img src="{% static "img/student2.jpg" %}">
+          </div>
+          <h1>Joaquin Daniel</h1>
+          <p>Vestibulum malesuada orci a dolor iaculis placerat. Cras sagittis sagittis consequat. Sed sagittis nibh at orci dapibus, eu laoreet mi sagittis. Nulla sed massa porta, venenatis magna sit amet, elementum arcu. Ut neque nisl, dictum at felis id, sodales bibendum ligula.</p>
+        </div>
+      </article>
+      <article class="span4">
+        <div>
+          <div class="thumb">
+            <img src="{% static "img/student3.jpg" %}">
+          </div>
+          <h1>Paula Caballero</h1>
+          <p>Aenean vel adipiscing sapien. Donec adipiscing nulla vitae blandit fermentum. Curabitur tincidunt sapien vitae mauris gravida adipiscing. Phasellus nec malesuada neque, vel consectetur ante. Nunc odio nulla, consectetur quis neque sed, tempus auctor justo.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+{%endblock%}
