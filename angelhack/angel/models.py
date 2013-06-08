@@ -26,7 +26,7 @@ class Student(models.Model):
   last_name = models.CharField(max_length=50);
   date_of_birth = models.DateField();
   gender = models.ForeignKey(Gender);
-  #image = models.ImageField(upload_to=None);
+  image = models.ImageField(max_length=255, upload_to='media', null=True);
   amount_needed = models.DecimalField(default=0.0,max_digits=9, \
                                       decimal_places=2);
   story = models.CharField(max_length=4000,null=True);

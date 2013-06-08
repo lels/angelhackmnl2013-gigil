@@ -16,6 +16,21 @@
       </p>
     </header>
     <div class="row-fluid">
+      {% for s in list_students %}
+        <article class="span4">
+          <div>
+            <div class="thumb">
+              <a href="1">
+                <img src="{{s.image.url}}">
+              </a>
+            </div>
+            <h1>{{s.first_name}} {{s.last_name}}</h1>
+            <p>{{s.story}}</p>
+          </div>
+        </article>
+      {% endfor %}
+
+      <!--
       <article class="span4">
         <div>
           <div class="thumb">
@@ -43,6 +58,7 @@
           <p>Aenean vel adipiscing sapien. Donec adipiscing nulla vitae blandit fermentum. Curabitur tincidunt sapien vitae mauris gravida adipiscing. Phasellus nec malesuada neque, vel consectetur ante. Nunc odio nulla, consectetur quis neque sed, tempus auctor justo.</p>
         </div>
       </article>
+      -->
     </div>
   </section>
 {%endblock%}
