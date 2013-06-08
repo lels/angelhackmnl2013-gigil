@@ -20,7 +20,7 @@
           <ul class="nav">
             <li><a href="#">browse</a></li>
             <li><a href="#">about us</a></li>
-            <li><form class="form-search" action="." method="get"><input type="search" name="search" placeholder="search" class="search-query"><input type="submit" class="btn" value="Search"></form></li>
+            <li><form class="form-search" action="{% url "search" %}" method="get"><input type="search" name="search" placeholder="search" class="search-query"><input type="submit" class="btn" value="Search"></form></li>
           </ul>
         </nav>
       </div>

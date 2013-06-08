@@ -4,6 +4,7 @@
 {% block body %}
   <div class="container main">
     <div class="row-fluid">
+  {% for student in list_students %}
       <section class="span4 fixed basic-info">
         <div class="container">
           <div class="thumb">
@@ -45,36 +46,62 @@
             </dd>
           </dl>
           <div class="progress progress-striped">
-            <div class="bar" style="width: {{student.get_received_percent}}%;">
+            <div class="bar" style="width: 80%;">
             </div>
           </div>
           <input type="button" class="btn btn-primary" value="Donate">
         </div>
       </section>
-      <section class="span8 more-info">
+  {% endfor %}
+  {% for student in list_students %}
+      <section class="span4 fixed basic-info">
         <div class="container">
-          <article>
-            <h1>{{student.story.title}}</h1>
-            {{student.story.text|linebreaks}}
-          </article>
-          <footer>
-          </footer>
+          <div class="thumb">
+            <img src="{{student.image.url}}">
+          </div>
+          <h1>
+            {{student.first_name}} {{student.middle_name}} {{student.last_name}}
+          </h1>
+          <dl class="clearfix list">
+            <dt>
+              Date of Birth
+            </dt>
+            <dd>
+              {{student.date_of_birth}}
+            </dd>
+            <dt>
+              Gender
+            </dt>
+            <dd>
+              {{student.gender.get_desc}}
+            </dd>
+            <dt>
+              Year Level
+            </dt>
+            <dd>
+              {{student.c_year_level.get_desc}}
+            </dd>
+            <dt>
+              Amount Needed
+            </dt>
+            <dd>
+             {{student.amount_needed}}
+            </dd>
+            <dt>
+              Vital Stat 1
+            </dt>
+            <dd>
+              Stat Value
+            </dd>
+          </dl>
+          <div class="progress progress-striped">
+            <div class="bar" style="width: 80%;">
+            </div>
+          </div>
+          <input type="button" class="btn btn-primary" value="Donate">
         </div>
       </section>
+  {% endfor %}
     </div>
   </div>
-  <!--
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_donations">
-      <input type="hidden" name="business" value="luigi.dollosa@gmail.com">
-      <input type="hidden" name="lc" value="US">
-      <input type="hidden" name="item_name" value="kwaderno">
-      <input type="hidden" name="no_note" value="0">
-      <input type="hidden" name="currency_code" value="PHP">
-      <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" 
-        alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-  -->
-{% endblock %}
+{%endblock%}

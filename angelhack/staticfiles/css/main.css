@@ -3,7 +3,8 @@ body {
   font-family: 'OpenSansRegular', sans-serif;
 }
 
-a:hover {
+a:hover,
+a:active {
   text-decoration: none;
 }
 
@@ -214,7 +215,7 @@ ul.actions li:last-child {
   font-weight: normal;
 }
 
-.profile-page .more-info .container article footer {
+.profile-page .more-info .container footer {
   height: 80px;
   padding: 0 20px;
   background-color: transparent;
