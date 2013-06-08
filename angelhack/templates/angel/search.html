@@ -9,48 +9,56 @@
       <section class="span4 fixed basic-info">
         <div class="container">
           <div class="thumb">
-            <img src="{{student.image.url}}">
+            <a href="{%url 'detail' student_id=student.pk%}">
+              <img src="{{student.image.url}}">
+            </a>
           </div>
           <h1>
+            <a href="{%url 'detail' student_id=student.pk%}">
             {{student.first_name}} {{student.middle_name}} {{student.last_name}}
+            </a>
           </h1>
           <dl class="clearfix list">
-            <dt>
+            <dt title="Date of Birth">
               Date of Birth
             </dt>
-            <dd>
+            <dd title="{{student.date_of_birth}}">
               {{student.date_of_birth}}
             </dd>
-            <dt>
+            <dt title="Gender">
               Gender
             </dt>
-            <dd>
+            <dd title="{{student.gender.get_desc}}">
               {{student.gender.get_desc}}
             </dd>
-            <dt>
+            <dt title="Year Level">
               Year Level
             </dt>
-            <dd>
+            <dd title="{{student.c_year_level.get_desc}}">
               {{student.c_year_level.get_desc}}
             </dd>
-            <dt>
+            <dt title="Amount Needed">
               Amount Needed
             </dt>
-            <dd>
+            <dd title="{{student.amount_needed}}">
              {{student.amount_needed}}
-            </dd>
-            <dt>
-              Vital Stat 1
-            </dt>
-            <dd>
-              Stat Value
             </dd>
           </dl>
           <div class="progress progress-striped">
-            <div class="bar" style="width: 80%;">
+            <span class="percent">{{student.get_received_percent}}%</span>
+            <div class="bar" style="width: {{student.get_received_percent}}%;">
             </div>
           </div>
-          <input type="button" class="btn btn-primary" value="Donate">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_donations"/>
+            <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
+            <input type="hidden" name="lc" value="US"/>
+            <input type="hidden" name="item_name" value="kwaderno"/>
+            <input type="hidden" name="no_note" value="0"/>
+            <input type="hidden" name="currency_code" value="PHP"/>
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
+            <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
+          </form>
         </div>
       </section>
     {% cycle '' '' '</div>' %}

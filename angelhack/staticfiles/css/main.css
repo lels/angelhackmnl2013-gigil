@@ -34,6 +34,14 @@ h1 {
   text-shadow: 1px 1px 1px black;
 }
 
+.jumbotron.masthead p {
+  margin-bottom: 1em;
+}
+
+.jumbotron.masthead p:last-child {
+  margin-bottom: 0;
+}
+
 .navbar .nav {
   float: right;
 }
@@ -83,8 +91,9 @@ footer nav li {
 }
 
 .featured article {
-  border-radius: 1em;
-  border: 1em solid #eee;
+  border-radius: 1.4em;
+  border: 0.4em solid #eee;
+  background-color: #999;
 }
 
 .featured h1 {
@@ -93,8 +102,9 @@ footer nav li {
 
 .featured article > div {
   padding: 1em;
-  border-radius: 0.2em;
-  border: 0.2em solid #999;
+  border-radius: 1em;
+  border: 0.2em solid #ccc;
+  background-color: #fff;
 }
 
 .featured .thumb {
@@ -146,18 +156,24 @@ dl.list {
 }
 
 dl.list dt {
-  padding: 0 2.25% 0 1.25%;
+  padding: 0 2.25% 0 1.5%;
   float: left;
-  width: 30%;
+  width: 46%;
   text-align: right;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 dl.list dd {
-  padding: 0 1.25% 0 2.25%;
+  padding: 0 1.5% 0 2.25%;
   float: left;
-  width: 63%;
+  width: 46%;
   text-align: left;
   margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 ul.actions {
@@ -265,15 +281,42 @@ footer {
   display: none;
 }
 
-.navbar {
-  font-family: 'Cabin', sans-serif;
-}
-
-.navbar a {
+.navbar, .navbar input {
+  font-family: 'CabinRegular', sans-serif;
   text-transform: uppercase;
   font-size: 0.8em;
 }
 
+.navbar .search-query {
+  font-size: 1em;
+  background-image: url('../img/search.png');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  padding-left: 3em;
+}
+
 .navbar a.logo {
   text-transform: lowercase;
+  font-size: 1.6em;
+}
+
+.btn,
+.btn:hover,
+.btn:active,
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active {
+  background-image: none;
+  font-family: 'CabinBold';
+  font-size: 1em;
+  padding: 0.8em 2em;
+}
+
+.featured article h1,
+.profile-page .basic-info h1 {
+  font-size: 2em;
+}
+
+.progress .percent {
+  display: none;
 }

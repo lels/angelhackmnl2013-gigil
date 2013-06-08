@@ -13,38 +13,33 @@
             {{student.first_name}} {{student.middle_name}} {{student.last_name}}
           </h1>
           <dl class="clearfix list">
-            <dt>
+            <dt title="Date of Birth">
               Date of Birth
             </dt>
-            <dd>
+            <dd title="{{student.date_of_birth}}">
               {{student.date_of_birth}}
             </dd>
-            <dt>
+            <dt title="Gender">
               Gender
             </dt>
-            <dd>
+            <dd title="{{student.gender.get_desc}}">
               {{student.gender.get_desc}}
             </dd>
-            <dt>
+            <dt title="Year Level">
               Year Level
             </dt>
-            <dd>
+            <dd title="{{student.c_year_level.get_desc}}">
               {{student.c_year_level.get_desc}}
             </dd>
-            <dt>
+            <dt title="Amount Needed">
               Amount Needed
             </dt>
-            <dd>
+            <dd title="{{student.amount_needed}}">
              {{student.amount_needed}}
-            </dd>
-            <dt>
-              Vital Stat 1
-            </dt>
-            <dd>
-              Stat Value
             </dd>
           </dl>
           <div class="progress progress-striped">
+            <span class="percent">{{student.get_received_percent}}%</span>
             <div class="bar" style="width: {{student.get_received_percent}}%;">
             </div>
           </div>
