@@ -57,6 +57,11 @@ class Student(models.Model):
   def amount_received(self):
     return Donation.objects.filter(student=self) \
            .aggregate(models.Sum('amount'))['amount__sum'];
+  
+  def get_received_percent(self):
+    print "a", self.amount_received();
+    print "b", self.amount_needed;
+    return "%.0f" % (self.amount_received() * 100 / self.amount_needed);
 
 class Donator(models.Model):
   username = models.CharField(max_length=32);
