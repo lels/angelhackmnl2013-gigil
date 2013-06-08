@@ -5,9 +5,15 @@ class Gender(models.Model):
   GENDER = (('M', 'Male'),('F','Female'));
   gender = models.CharField(max_length=1,choices=GENDER,default='M');
   
+  def get_desc(self):
+    return dict(self.GENDER)[self.gender];
+  
 class YesNo(models.Model):
   YES_NO = (('Y', 'Yes'),('N','No'));
   yes_no = models.CharField(max_length=1,choices=YES_NO,default='Y');
+  
+  def get_desc(self):
+    return dict(self.YES_NO)[self.yes_no];
   
 class YearLevel(models.Model):
   YEAR_IN_SCHOOL = (('1','Nursery'),('2','Kinder 1'),('3','Kinder 2'),\
@@ -19,6 +25,15 @@ class YearLevel(models.Model):
   
   year_in_school = models.CharField(max_length=2,choices=YEAR_IN_SCHOOL,\
                                     default=0);
+  
+  def get_desc(self):
+    return dict(self.YEAR_IN_SCHOOL)[self.year_in_school];
+
+class Story(models.Model):
+  title = models.CharField(max_length=50);
+  text = models.CharField(max_length=4000);
+  create_dt = models.DateTimeField(auto_now_add=True);
+  last_upd_dt = models.DateTimeField(auto_now=True);
 
 class Student(models.Model):
   first_name = models.CharField(max_length=50);
@@ -29,7 +44,7 @@ class Student(models.Model):
   image = models.ImageField(max_length=255, upload_to='media', null=True);
   amount_needed = models.DecimalField(default=0.0,max_digits=9, \
                                       decimal_places=2);
-  story = models.CharField(max_length=4000,null=True);
+  story = models.ForeignKey(Story);
   c_year_level = models.ForeignKey(YearLevel);
   last_upd_dt = models.DateTimeField(auto_now=True);
   
@@ -42,13 +57,6 @@ class Student(models.Model):
   def amount_received(self):
     return Donation.objects.filter(student=self) \
            .aggregate(models.Sum('amount'))['amount__sum'];
-
-class SuccessStory(models.Model):
-  student = models.ForeignKey(Student);
-  title = models.CharField(max_length=50);
-  text = models.CharField(max_length=4000);
-  create_dt = models.DateTimeField(auto_now_add=True);
-  last_upd_dt = models.DateTimeField(auto_now=True);
 
 class Donator(models.Model):
   username = models.CharField(max_length=32);
