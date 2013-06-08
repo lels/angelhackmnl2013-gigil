@@ -3,8 +3,9 @@
 {% block body_class %}profile-page {% endblock %}
 {% block body %}
   <div class="container main">
-    <div class="row-fluid">
+    
   {% for student in list_students %}
+    {% cycle '<div class="row-fluid">' '' '' %}
       <section class="span4 fixed basic-info">
         <div class="container">
           <div class="thumb">
@@ -52,55 +53,7 @@
           <input type="button" class="btn btn-primary" value="Donate">
         </div>
       </section>
-  {% endfor %}
-  {% for student in list_students %}
-      <section class="span4 fixed basic-info">
-        <div class="container">
-          <div class="thumb">
-            <img src="{{student.image.url}}">
-          </div>
-          <h1>
-            {{student.first_name}} {{student.middle_name}} {{student.last_name}}
-          </h1>
-          <dl class="clearfix list">
-            <dt>
-              Date of Birth
-            </dt>
-            <dd>
-              {{student.date_of_birth}}
-            </dd>
-            <dt>
-              Gender
-            </dt>
-            <dd>
-              {{student.gender.get_desc}}
-            </dd>
-            <dt>
-              Year Level
-            </dt>
-            <dd>
-              {{student.c_year_level.get_desc}}
-            </dd>
-            <dt>
-              Amount Needed
-            </dt>
-            <dd>
-             {{student.amount_needed}}
-            </dd>
-            <dt>
-              Vital Stat 1
-            </dt>
-            <dd>
-              Stat Value
-            </dd>
-          </dl>
-          <div class="progress progress-striped">
-            <div class="bar" style="width: 80%;">
-            </div>
-          </div>
-          <input type="button" class="btn btn-primary" value="Donate">
-        </div>
-      </section>
+    {% cycle '' '' '</div>' %}
   {% endfor %}
     </div>
   </div>

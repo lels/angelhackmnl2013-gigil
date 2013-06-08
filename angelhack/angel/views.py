@@ -14,4 +14,4 @@ def donate(request, student_id):
   
 def search(request):
   search = request.REQUEST['search']
-  return render_to_response('angel/search.html', {"list_students": Student.objects.filter(Q(first_name__icontains=search)|Q(last_name__icontains=search)).order_by('amount_needed')})
+  return render_to_response('angel/search.html', {"list_students": Student.objects.filter(Q(first_name__icontains=search)|Q(middle_name__icontains=search)|Q(last_name__icontains=search)).order_by('amount_needed')})
