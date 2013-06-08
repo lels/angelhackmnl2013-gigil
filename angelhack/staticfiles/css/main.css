@@ -172,7 +172,9 @@ ul.actions li:last-child {
 
 .profile-page .more-info {
   margin-top: 40px;
-  background-color: blue;
+  background-image: url('../img/spring.png');
+  background-repeat: repeat-y;
+  background-color: transparent;
   padding-left: 40px;
 }
 
