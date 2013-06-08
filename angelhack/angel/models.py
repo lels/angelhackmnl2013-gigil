@@ -7,6 +7,9 @@ class Gender(models.Model):
   
   def get_desc(self):
     return dict(self.GENDER)[self.gender];
+    
+  def __str__(self):
+    return self.get_desc();
   
 class YesNo(models.Model):
   YES_NO = (('Y', 'Yes'),('N','No'));
@@ -14,6 +17,9 @@ class YesNo(models.Model):
   
   def get_desc(self):
     return dict(self.YES_NO)[self.yes_no];
+    
+  def __str__(self):
+    return self.get_desc();
   
 class YearLevel(models.Model):
   YEAR_IN_SCHOOL = (('1','Nursery'),('2','Kinder 1'),('3','Kinder 2'),\
@@ -28,6 +34,9 @@ class YearLevel(models.Model):
   
   def get_desc(self):
     return dict(self.YEAR_IN_SCHOOL)[self.year_in_school];
+    
+  def __str__(self):
+    return self.get_desc();
 
 class Story(models.Model):
   title = models.CharField(max_length=50);
@@ -55,13 +64,17 @@ class Student(models.Model):
   
   #This function returns the amount recieved by a student
   def amount_received(self):
-    return Donation.objects.filter(student=self) \
-           .aggregate(models.Sum('amount'))['amount__sum'];
+    q = Donation.objects.filter(student=self)
+    if q.count() > 0:
+      return q.aggregate(models.Sum('amount'))['amount__sum'];
+    return 0
   
   def get_received_percent(self):
-    print "a", self.amount_received();
-    print "b", self.amount_needed;
-    return "%.0f" % (self.amount_received() * 100 / self.amount_needed);
+    percentage = (self.amount_received() * 100 / self.amount_needed);
+    return "%.0f" % percentage;
+    
+  def __str__(self):
+    return self.last_name + ", " + self.first_name + " " + self.middle_name;
 
 class Donator(models.Model):
   username = models.CharField(max_length=32);
@@ -80,10 +93,16 @@ class Donator(models.Model):
   def amount_given(self):
     return Donation.objects.filter(donator=self) \
            .aggregate(models.Sum('amount'))['amount__sum'];
+           
+  def __str__(self):
+    return self.last_name + ", " + self.first_name + " " + self.middle_name;
 
 class Donation(models.Model):
   student = models.ForeignKey(Student);
   donator = models.ForeignKey(Donator);
   amount = models.DecimalField(default=0.0,max_digits=9,decimal_places=2);
+           
+  def __str__(self):
+    return str(self.donator) + " to " + str(self.student) + ": " + str(self.amount);
   
 # Create your models here.

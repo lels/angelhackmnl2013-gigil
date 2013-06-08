@@ -316,3 +316,7 @@ footer {
 .profile-page .basic-info h1 {
   font-size: 2em;
 }
+
+.progress .percent {
+  display: none;
+}

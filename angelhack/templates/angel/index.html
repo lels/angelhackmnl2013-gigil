@@ -20,22 +20,37 @@
         <article class="span4">
           <div>
             <div class="thumb">
-              <a href="{{s.pk}}">
+              <a href="{%url 'detail' student_id=s.pk%}">
                 <img src="{{s.image.url}}">
               </a>
             </div>
-            <a href="{{s.pk}}">
+            <a href="{%url 'detail' student_id=s.pk%}">
               <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
             </a>
             <div class="ellipsis" style="height:170px;">
               {{s.story.text|linebreaks}}
             </div>
-            <script type="text/javascript">
-              $("div.ellipsis").dotdotdot();
-            </script>
+            <div class="progress progress-striped">
+              <span class="percent">{{s.get_received_percent}}%</span>
+              <div class="bar" style="width: {{s.get_received_percent}}%;">
+              </div>
+            </div>
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_donations"/>
+              <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
+              <input type="hidden" name="lc" value="US"/>
+              <input type="hidden" name="item_name" value="kwaderno"/>
+              <input type="hidden" name="no_note" value="0"/>
+              <input type="hidden" name="currency_code" value="PHP"/>
+              <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
+              <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
+            </form>
           </div>
         </article>
       {% endfor %}
     </div>
   </section>
+  <script type="text/javascript">
+    $("div.ellipsis").dotdotdot();
+  </script>
 {%endblock%}
