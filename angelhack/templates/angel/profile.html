@@ -48,7 +48,16 @@
             <div class="bar" style="width: {{student.get_received_percent}}%;">
             </div>
           </div>
-          <input type="button" class="btn btn-primary" value="Donate">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_donations"/>
+            <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
+            <input type="hidden" name="lc" value="US"/>
+            <input type="hidden" name="item_name" value="kwaderno"/>
+            <input type="hidden" name="no_note" value="0"/>
+            <input type="hidden" name="currency_code" value="PHP"/>
+            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
+            <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
+          </form>
         </div>
       </section>
       <section class="span8 more-info">
@@ -57,24 +66,30 @@
             <h1>{{student.story.title}}</h1>
             {{student.story.text|linebreaks}}
           </article>
-          <footer>
+          <footer style="height:auto;width:500px;margin: auto;">
+            <a class="retweet self"></a>
+            <a id="fb_share" href="#">Share on Facebook</a>
+            <script>
+              // Fix for the late rendering of FB comments
+              FB.Event.subscribe("xfbml.render", 
+                function(response) {
+                  $("iframe.fb_ltr").height("300px");
+                }
+              );
+            </script>
+            <fb:comments href="test.html" num_posts="10" style="width:100%;"></fb:comments>
           </footer>
         </div>
       </section>
     </div>
   </div>
-  <!--
-    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_donations">
-      <input type="hidden" name="business" value="luigi.dollosa@gmail.com">
-      <input type="hidden" name="lc" value="US">
-      <input type="hidden" name="item_name" value="kwaderno">
-      <input type="hidden" name="no_note" value="0">
-      <input type="hidden" name="currency_code" value="PHP">
-      <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest">
-      <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" 
-        alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-  -->
+  
+  <script>
+    $("#fb_share").click(
+      function() {
+        var sharer = "https://www.facebook.com/sharer/sharer.php?u=";
+        window.open(sharer + encodeURIComponent(location.href), 'sharer', 'width=626,height=436');
+      }
+    );
+  </script>
 {% endblock %}
