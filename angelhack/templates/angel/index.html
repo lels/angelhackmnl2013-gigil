@@ -3,17 +3,14 @@
 {% block body %}
   <section class="jumbotron masthead">
     <h1>kwaderno</h1>
-    <p>Lorem ipsum dolor sit amet consecteture adpiscing elit.</p>
+    <p>Fund the schooling needs of the Filipino youth</p>
     <p><input class="btn btn-primary" type="button" value="View Scholars"></p>
   </section>
   <section class="container featured">
     <header>
       <h1>
-        Meet Our Scholars
+        Fund these people and projects
       </h1>
-      <p>
-        Mauris facilisis interdum libero, et venenatis felis interdum vitae. 
-      </p>
     </header>
     <div class="row-fluid">
       {% for s in list_students %}
@@ -27,7 +24,7 @@
             <a href="{%url 'detail' student_id=s.pk%}">
               <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
             </a>
-            <div class="ellipsis" style="height:170px;">
+            <div class="ellipsis" style="">
               {{s.story.text|linebreaks}}
             </div>
             <div class="progress progress-striped">
@@ -51,6 +48,6 @@
     </div>
   </section>
   <script type="text/javascript">
-    $("div.ellipsis").dotdotdot();
+    $(".featured article").dotdotdot({height: "6em"});
   </script>
 {%endblock%}
