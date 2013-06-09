@@ -20,7 +20,18 @@ class YesNo(models.Model):
     
   def __str__(self):
     return self.get_desc();
+
+class NeedItem(models.Model):
+  NEED = (('book', 'Book'),('food','Food'), \
+            ('pencil','Pencil'),('notebook','Notebook'));
+  need = models.CharField(max_length=50,choices=NEED);
   
+  def get_desc(self):
+    return dict(self.NEED)[self.need];
+    
+  def __str__(self):
+    return self.get_desc();
+
 class YearLevel(models.Model):
   YEAR_IN_SCHOOL = (('1','Nursery'),('2','Kinder 1'),('3','Kinder 2'),\
         ('4','Grade 1'),('5','Grade 2'),('6','Grade 3'),\
@@ -40,7 +51,9 @@ class YearLevel(models.Model):
 
 class Story(models.Model):
   title = models.CharField(max_length=50);
+  pitch = models.CharField(max_length=1000);
   text = models.CharField(max_length=4000);
+  need_statement = models.CharField(max_length=1000);
   create_dt = models.DateTimeField(auto_now_add=True);
   last_upd_dt = models.DateTimeField(auto_now=True);
 
@@ -55,6 +68,8 @@ class Student(models.Model):
                                       decimal_places=2);
   story = models.ForeignKey(Story);
   c_year_level = models.ForeignKey(YearLevel);
+  need_items = models.ManyToManyField(NeedItem);
+  code = models.CharField(max_length=10);
   last_upd_dt = models.DateTimeField(auto_now=True);
   
   #This function returns the number of benefactors that has helped the given
@@ -70,6 +85,9 @@ class Student(models.Model):
     return 0
   
   def get_received_percent(self):
+    if self.amount_needed == 0:
+      self.amount_needed = 1;
+      
     percentage = (self.amount_received() * 100 / self.amount_needed);
     return "%.0f" % percentage;
     

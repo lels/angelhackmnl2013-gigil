@@ -24,7 +24,6 @@
             <a href="{%url 'detail' student_id=s.pk%}">
               <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
             </a>
-            {{s.story.text|linebreaks}}
           </div>
           <div class="progress progress-striped{% if s.get_received_percent > 99 %} progress-success{% endif %}">
             <span class="percent">{{s.get_received_percent}}%{% if s.get_received_percent > 99 %} Success!{% endif %}</span>
