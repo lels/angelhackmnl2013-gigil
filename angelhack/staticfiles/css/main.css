@@ -441,3 +441,7 @@ footer {
   margin-left: 10px;
   margin-bottom: 10px;
 }
+
+.retweet strong {
+  display: none;
+}
