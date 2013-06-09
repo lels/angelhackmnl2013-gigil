@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load staticfiles humanize %}
 {% block body_class %}profile-page {% endblock %}
 {% block body %}
   <div class="container main">
@@ -35,24 +35,34 @@
               Amount Needed
             </dt>
             <dd title="{{student.amount_needed}}">
-             {{student.amount_needed}}
+             {{student.amount_needed|intcomma}} Php
+            </dd>
+            <dt title="Amount Received">
+              Amount Received
+            </dt>
+            <dd title="{{student.amount_received}}">
+             {{student.amount_received|intcomma}} Php
             </dd>
           </dl>
-          <div class="progress progress-striped">
-            <span class="percent">{{student.get_received_percent}}%</span>
+          <div class="progress progress-striped{% if student.get_received_percent > 99 %} progress-success{% endif %}">
+            <span class="percent">{{student.get_received_percent}}%{% if student.get_received_percent > 99 %} Success!{% endif %}</span>
             <div class="bar" style="width: {{student.get_received_percent}}%;">
             </div>
           </div>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_donations"/>
-            <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
-            <input type="hidden" name="lc" value="US"/>
-            <input type="hidden" name="item_name" value="kwaderno"/>
-            <input type="hidden" name="no_note" value="0"/>
-            <input type="hidden" name="currency_code" value="PHP"/>
-            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
-            <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
-          </form>
+          <div class="donate">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_donations"/>
+              <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
+              <input type="hidden" name="lc" value="US"/>
+              <input type="hidden" name="item_name" value="kwaderno"/>
+              <input type="hidden" name="no_note" value="0"/>
+              <input type="hidden" name="currency_code" value="PHP"/>
+              <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
+              <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate through Paypal">
+            </form>
+            or<br>
+            text <strong>&lt;CODE&gt; &lt;amount&gt;</strong> to <strong>1234</strong>
+          </div>
         </div>
       </section>
       <section class="span8 more-info">
@@ -61,17 +71,10 @@
             <h1>{{student.story.title}}</h1>
             {{student.story.text|linebreaks}}
           </article>
-          <footer style="height:auto;width:500px;margin: auto;">
-            <a class="retweet self"></a>
-            <a id="fb_share" href="#">Share on Facebook</a>
-            <script>
-              // Fix for the late rendering of FB comments
-              FB.Event.subscribe("xfbml.render", 
-                function(response) {
-                  $("iframe.fb_ltr").height("300px");
-                }
-              );
-            </script>
+          <footer>
+            <h1>Social</h1>
+            <a class="retweet self" title="Tweet"></a>
+            <a id="fb_share" href="#" title="Share">Share on Facebook</a>
             <fb:comments href="test.html" num_posts="10" style="width:100%;"></fb:comments>
           </footer>
         </div>
@@ -88,3 +91,6 @@
     );
   </script>
 {% endblock %}
+
+
+{% block title %}{{student.first_name}} {{student.middle_name}} {{student.last_name}}{% endblock %}

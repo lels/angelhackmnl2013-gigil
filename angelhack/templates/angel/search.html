@@ -44,21 +44,25 @@
              {{student.amount_needed}}
             </dd>
           </dl>
-          <div class="progress progress-striped">
-            <span class="percent">{{student.get_received_percent}}%</span>
+          <div class="progress progress-striped{% if student.get_received_percent > 99 %} progress-success{% endif %}">
+            <span class="percent">{{student.get_received_percent}}%{% if student.get_received_percent > 99 %} Success!{% endif %}</span>
             <div class="bar" style="width: {{student.get_received_percent}}%;">
             </div>
           </div>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_donations"/>
-            <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
-            <input type="hidden" name="lc" value="US"/>
-            <input type="hidden" name="item_name" value="kwaderno"/>
-            <input type="hidden" name="no_note" value="0"/>
-            <input type="hidden" name="currency_code" value="PHP"/>
-            <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
-            <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
-          </form>
+          <div class="donate">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_donations"/>
+              <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
+              <input type="hidden" name="lc" value="US"/>
+              <input type="hidden" name="item_name" value="kwaderno"/>
+              <input type="hidden" name="no_note" value="0"/>
+              <input type="hidden" name="currency_code" value="PHP"/>
+              <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
+              <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate through Paypal">
+            </form>
+            or<br>
+            text <strong>&lt;CODE&gt; &lt;amount&gt;</strong> to <strong>1234</strong>
+          </div>
         </div>
       </section>
     {% cycle '' '' '</div>' %}
@@ -66,3 +70,5 @@
     </div>
   </div>
 {%endblock%}
+
+{% block title %}Search Results{% endblock %}

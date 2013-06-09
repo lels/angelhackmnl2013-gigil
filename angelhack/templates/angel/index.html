@@ -4,7 +4,7 @@
   <section class="jumbotron masthead">
     <h1>kwaderno</h1>
     <p>Fund the schooling needs of the Filipino youth</p>
-    <p><input class="btn btn-primary" type="button" value="View Scholars"></p>
+    <p><a href="{% url 'search' %}?search=" class="btn btn-primary">View Scholars</a></p>
   </section>
   <section class="container featured">
     <header>
@@ -15,23 +15,23 @@
     <div class="row-fluid">
       {% for s in list_students %}
         <article class="span4">
-          <div>
-            <div class="thumb">
-              <a href="{%url 'detail' student_id=s.pk%}">
-                <img src="{{s.image.url}}">
-              </a>
-            </div>
+          <div class="thumb">
+            <a href="{%url 'detail' student_id=s.pk%}">
+              <img src="{{s.image.url}}">
+            </a>
+          </div>
+          <div class="ellipsis">
             <a href="{%url 'detail' student_id=s.pk%}">
               <h1>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</h1>
             </a>
-            <div class="ellipsis" style="">
-              {{s.story.text|linebreaks}}
+            {{s.story.text|linebreaks}}
+          </div>
+          <div class="progress progress-striped{% if s.get_received_percent > 99 %} progress-success{% endif %}">
+            <span class="percent">{{s.get_received_percent}}%{% if s.get_received_percent > 99 %} Success!{% endif %}</span>
+            <div class="bar" style="width: {{s.get_received_percent}}%;">
             </div>
-            <div class="progress progress-striped">
-              <span class="percent">{{s.get_received_percent}}%</span>
-              <div class="bar" style="width: {{s.get_received_percent}}%;">
-              </div>
-            </div>
+          </div>
+          <div class="donate">
             <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
               <input type="hidden" name="cmd" value="_donations"/>
               <input type="hidden" name="business" value="luigi.dollosa@gmail.com"/>
@@ -40,14 +40,15 @@
               <input type="hidden" name="no_note" value="0"/>
               <input type="hidden" name="currency_code" value="PHP"/>
               <input type="hidden" name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHostedGuest"/>
-              <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate">
+              <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate through Paypal">
             </form>
+            or<br>
+            text <strong>&lt;CODE&gt; &lt;amount&gt;</strong> to <strong>1234</strong>
           </div>
         </article>
       {% endfor %}
     </div>
   </section>
-  <script type="text/javascript">
-    $(".featured article").dotdotdot({height: "6em"});
-  </script>
 {%endblock%}
+
+{% block title %}Fund the schooling needs of the Filipino youth{% endblock %}

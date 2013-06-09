@@ -91,20 +91,29 @@ footer nav li {
 }
 
 .featured article {
-  border-radius: 1.4em;
-  border: 0.4em solid #eee;
-  background-color: #999;
+  padding: 1em;
+  border-radius: 1em;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-color: rgba(204, 204, 204, 0.8);
+  outline: 0;
+  outline: thin dotted 9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 20px rgba(204, 204, 204, .6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 20px rgba(204, 204, 204,.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 20px rgba(204, 204, 204, .6);
+}
+
+.featured article:hover {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted 9;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 20px rgba(82, 168, 236, .6);
+  -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 20px rgba(82,168,236,.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 20px rgba(82, 168, 236, .6);
 }
 
 .featured h1 {
   color: #333;
-}
-
-.featured article > div {
-  padding: 1em;
-  border-radius: 1em;
-  border: 0.2em solid #ccc;
-  background-color: #fff;
 }
 
 .featured .thumb {
@@ -232,11 +241,17 @@ ul.actions li:last-child {
 }
 
 .profile-page .more-info .container footer {
-  height: 80px;
   padding: 0 20px;
   background-color: transparent;
   text-shadow: none;
   text-align: right;
+  height: auto;
+}
+
+.profile-page .more-info .container footer .fb_iframe_widget {
+  text-align: center;
+  border-top: #ccc 1px solid;
+  padding-top: 20px;
 }
 
 .main {
@@ -319,4 +334,108 @@ footer {
 
 .progress .percent {
   display: none;
+}
+
+.donate {
+  text-align: center;
+}
+
+.donate form {
+  margin-bottom: 0.3em;
+}
+
+[name='btn-donate'],
+[name='btn-donate']:hover,
+[name='btn-donate']:active {
+  padding-left: 3em;
+  background-image: url('../img/heart2.png');
+  background-repeat: no-repeat;
+  background-size: auto 50%;
+  background-position: 1em center !important;
+}
+
+#fb_share {
+  width: 32px;
+  height: 32px;
+  text-indent: -999px;
+  color: transparent;
+  background-image: url('../img/somicro-without-border/facebook.png');
+  background-repeat: no-repeat;
+  display: block;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.retweet {
+  width: 32px;
+  height: 32px;
+  text-indent: -999px;
+  color: transparent;
+  background-image: url('../img/somicro-without-border/twitter.png');
+  background-repeat: no-repeat;
+  display: block;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.retweet span {
+  display: none;
+}
+
+.profile-page .more-info .container footer h1 {
+  float: left;
+  font-size: 0.9em;
+  line-height: 2em;
+  font-family: 'CabinRegular', sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.needs {
+  display: block;
+  padding: 0;
+}
+
+.needs > * {
+  width: 16px;
+  height: 16px;
+  text-indent: -999px;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-size: auto 16px;
+  display: block;
+  float: right;
+  margin: 0 4px 0 4px;
+}
+
+.needs .books {
+  background-image: url('../img/book.png');
+}
+
+.needs .food {
+  background-image: url('../img/food.png');
+}
+
+.needs .pencils {
+  background-image: url('../img/pencil.png');
+}
+
+.needs .notebooks {
+  background-image: url('../img/notebook.png');
+}
+
+.retweet {
+  width: 32px;
+  height: 32px;
+  text-indent: -999px;
+  color: transparent;
+  background-image: url('../img/somicro-without-border/twitter.png');
+  background-repeat: no-repeat;
+  display: block;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
