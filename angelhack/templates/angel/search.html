@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load staticfiles humanize %}
 {% block body_class %}profile-page {% endblock %}
 {% block body %}
   <div class="container main">
@@ -41,7 +41,13 @@
               Amount Needed
             </dt>
             <dd title="{{student.amount_needed}}">
-             {{student.amount_needed}}
+             {{student.amount_needed|intcomma}} Php
+            </dd>
+            <dt title="Amount Received">
+              Amount Received
+            </dt>
+            <dd title="{{student.amount_received}}">
+             {{student.amount_received|intcomma}} Php
             </dd>
           </dl>
           <div class="progress progress-striped{% if student.get_received_percent > 99 %} progress-success{% endif %}">
