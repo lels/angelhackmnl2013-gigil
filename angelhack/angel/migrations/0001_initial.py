@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
         # Adding model 'NeedItem'
         db.create_table(u'angel_needitem', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('need', self.gf('django.db.models.fields.CharField')(default='M', max_length=1)),
+            ('need', self.gf('django.db.models.fields.CharField')(max_length=50)),
         ))
         db.send_create_signal(u'angel', ['NeedItem'])
 
@@ -54,16 +54,25 @@ class Migration(SchemaMigration):
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('middle_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('date_of_birth', self.gf('django.db.models.fields.DateField')()),
+            ('date_of_birth', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
             ('gender', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['angel.Gender'])),
             ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=255, null=True)),
             ('amount_needed', self.gf('django.db.models.fields.DecimalField')(default=0.0, max_digits=9, decimal_places=2)),
             ('story', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['angel.Story'])),
             ('c_year_level', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['angel.YearLevel'])),
-            ('need_items', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['angel.NeedItem'])),
+            ('code', self.gf('django.db.models.fields.CharField')(max_length=10)),
             ('last_upd_dt', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal(u'angel', ['Student'])
+
+        # Adding M2M table for field need_items on 'Student'
+        m2m_table_name = db.shorten_name(u'angel_student_need_items')
+        db.create_table(m2m_table_name, (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('student', models.ForeignKey(orm[u'angel.student'], null=False)),
+            ('needitem', models.ForeignKey(orm[u'angel.needitem'], null=False))
+        ))
+        db.create_unique(m2m_table_name, ['student_id', 'needitem_id'])
 
         # Adding model 'Donator'
         db.create_table(u'angel_donator', (
@@ -107,6 +116,9 @@ class Migration(SchemaMigration):
         # Deleting model 'Student'
         db.delete_table(u'angel_student')
 
+        # Removing M2M table for field need_items on 'Student'
+        db.delete_table(db.shorten_name(u'angel_student_need_items'))
+
         # Deleting model 'Donator'
         db.delete_table(u'angel_donator')
 
@@ -141,7 +153,7 @@ class Migration(SchemaMigration):
         u'angel.needitem': {
             'Meta': {'object_name': 'NeedItem'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'need': ('django.db.models.fields.CharField', [], {'default': "'M'", 'max_length': '1'})
+            'need': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         },
         u'angel.story': {
             'Meta': {'object_name': 'Story'},
@@ -157,7 +169,8 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Student'},
             'amount_needed': ('django.db.models.fields.DecimalField', [], {'default': '0.0', 'max_digits': '9', 'decimal_places': '2'}),
             'c_year_level': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['angel.YearLevel']"}),
-            'date_of_birth': ('django.db.models.fields.DateField', [], {}),
+            'code': ('django.db.models.fields.CharField', [], {'max_length': '10'}),
+            'date_of_birth': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'gender': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['angel.Gender']"}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -165,7 +178,7 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'last_upd_dt': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
             'middle_name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
-            'need_items': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['angel.NeedItem']"}),
+            'need_items': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['angel.NeedItem']", 'symmetrical': 'False'}),
             'story': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['angel.Story']"})
         },
         u'angel.yearlevel': {

@@ -2,7 +2,7 @@ from django.db import models;
 from datetime import datetime;
 
 class Gender(models.Model):
-  GENDER = (('M', 'Male'),('F','Female'));
+  GENDER = (('M', 'Male'),('F','Female'),('N','Male/Female'));
   gender = models.CharField(max_length=1,choices=GENDER,default='M');
   
   def get_desc(self):
@@ -61,7 +61,7 @@ class Student(models.Model):
   first_name = models.CharField(max_length=50);
   middle_name = models.CharField(max_length=50);
   last_name = models.CharField(max_length=50);
-  date_of_birth = models.DateField();
+  date_of_birth = models.DateField(null=True,blank=True);
   gender = models.ForeignKey(Gender);
   image = models.ImageField(max_length=255, upload_to='media', null=True);
   amount_needed = models.DecimalField(default=0.0,max_digits=9, \

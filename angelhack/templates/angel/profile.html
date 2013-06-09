@@ -12,6 +12,13 @@
           <h1>
             {{student.first_name}} {{student.middle_name}} {{student.last_name}}
           </h1>
+          <dl>
+            <ul class="needs">
+              {% for need_item in student.need_items.all %}
+                <li class="{{need_item.need}}" title="{{need_item.get_desc}}"></li>
+              {% endfor %}
+            </ul>
+          </dl>
           <dl class="clearfix list">
             <dt title="Date of Birth">
               Date of Birth
@@ -61,7 +68,7 @@
               <input name="btn-donate" type="submit" class="btn btn-primary" value="Donate through Paypal">
             </form>
             or<br>
-            text <strong>&lt;CODE&gt; &lt;amount&gt;</strong> to <strong>1234</strong>
+            text <strong>{{student.code}} &lt;amount&gt;</strong> to <strong>1234</strong>
           </div>
         </div>
       </section>
@@ -70,6 +77,9 @@
           <article>
             <h1>{{student.story.title}}</h1>
             {{student.story.text|linebreaks}}
+            <p>
+              <b>{{student.story.need_statement}}</b>
+            </p>
           </article>
           <footer>
             <h1>Social</h1>

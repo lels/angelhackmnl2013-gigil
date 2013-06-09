@@ -51,7 +51,7 @@ footer .logo {
   float: left;
   font-family: 'PacificoRegular', sans-serif;
   line-height: 40px;
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 footer {
@@ -162,6 +162,7 @@ section header {
 
 dl.list {
   margin: 0.6em 1em 0.4em;
+  clear: both;
 }
 
 dl.list dt {
@@ -312,7 +313,7 @@ footer {
 
 .navbar a.logo {
   text-transform: lowercase;
-  font-size: 1.6em;
+  font-size: 2em;
 }
 
 .btn,
@@ -357,7 +358,7 @@ footer {
 #fb_share {
   width: 32px;
   height: 32px;
-  text-indent: -999px;
+  text-indent: -9999px;
   color: transparent;
   background-image: url('../img/somicro-without-border/facebook.png');
   background-repeat: no-repeat;
@@ -365,6 +366,7 @@ footer {
   float: right;
   margin-left: 10px;
   margin-bottom: 10px;
+  text-align: left;
 }
 
 .retweet {
@@ -397,6 +399,7 @@ footer {
 .needs {
   display: block;
   padding: 0;
+  text-align: center;
 }
 
 .needs > * {
@@ -406,12 +409,11 @@ footer {
   color: transparent;
   background-repeat: no-repeat;
   background-size: auto 16px;
-  display: block;
-  float: right;
+  display: inline-block;
   margin: 0 4px 0 4px;
 }
 
-.needs .books {
+.needs .book {
   background-image: url('../img/book.png');
 }
 
@@ -419,11 +421,11 @@ footer {
   background-image: url('../img/food.png');
 }
 
-.needs .pencils {
+.needs .pencil {
   background-image: url('../img/pencil.png');
 }
 
-.needs .notebooks {
+.needs .notebook {
   background-image: url('../img/notebook.png');
 }
 
