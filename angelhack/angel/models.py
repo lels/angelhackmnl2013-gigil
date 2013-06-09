@@ -22,8 +22,8 @@ class YesNo(models.Model):
     return self.get_desc();
 
 class NeedItem(models.Model):
-  NEED = (('book', 'Book'),('food','Food'), \
-            ('pencil','Pencil'),('notebook','Notebook'));
+  NEED = (('book', 'Books'),('food','Food Allowance'), \
+            ('pencil','Pencils'),('notebook','Notebooks'));
   need = models.CharField(max_length=50,choices=NEED);
   
   def get_desc(self):

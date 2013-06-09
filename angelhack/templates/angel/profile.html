@@ -15,7 +15,7 @@
           <dl>
             <ul class="needs">
               {% for need_item in student.need_items.all %}
-                <li class="{{need_item.need}}" title="{{need_item.get_desc}}"></li>
+                <li class="{{need_item.need}}" title="{{need_item.get_desc}}"></li>{{need_item.get_desc}}
               {% endfor %}
             </ul>
           </dl>
